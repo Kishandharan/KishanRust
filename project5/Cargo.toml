@@ -1,0 +1,7 @@
+[package]
+name = "project5"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+prompt-input = "1.0.1"
