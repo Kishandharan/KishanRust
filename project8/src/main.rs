@@ -1,52 +1,24 @@
-fn main() {
-    let mut prison_cells = vec![];
-    let mut iter = 0;
-    println!("{:?}", prison_cells);
-
-    while iter < 10{
-        prison_cells.push("C");
-        iter += 1;
+fn main(){
+    let mut prison_cells = vec!["C","C","C","C","C","C","C","C","C","C"];
+    
+    for x in 0..prison_cells.len(){
+        prison_cells[x] = "O";
     }
-    iter = 0;
     println!("{:?}", prison_cells);
 
-    while iter < prison_cells.len(){
-        prison_cells[iter] = "O";
-        iter += 1;
+    for x in (1..prison_cells.len()).step_by(2){
+        prison_cells[x] = "C";
     }
-    iter = 0;
     println!("{:?}", prison_cells);
 
-    while iter < prison_cells.len(){
-         iter += 2;
-         prison_cells[iter-1] = "C";
-    }
-    iter = 0;
-    println!("{:?}", prison_cells);
-
-    while iter < prison_cells.len(){
-        iter += 3;
-        if iter > prison_cells.len(){ break; }
-
-        if prison_cells[iter-1] == "C"{
-            prison_cells[iter-1] = "O";
-        }else{
-            prison_cells[iter-1] = "C";
+    for x in 3..=prison_cells.len(){
+        for y in ((x-1)..prison_cells.len()).step_by(x){
+            if prison_cells[y] == "C"{
+                prison_cells[y] = "O";
+            }else{
+                prison_cells[y] = "C";
+            }
         }
+        println!("{:?}", prison_cells);
     }
-    iter = 0;
-
-    while iter < prison_cells.len(){
-        iter += 4;
-        if iter > prison_cells.len() { break; }
-
-        if prison_cells[iter-1] == "C"{
-            prison_cells[iter-1] = "O";
-        }else{
-            prison_cells[iter-1] = "C";
-        }
-    }
-
-    // Completed Four Rounds, Need to change this to use for loop
-    println!("{:?}", prison_cells);
 }
